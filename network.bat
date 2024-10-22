@@ -15,6 +15,7 @@ echo 4 - Show MAC address
 echo 5 - Energy efficent
 echo 6 - File/Aplication Association
 echo 7 - Disc Repair
+echo 8 - Ping to URL
 echo 9 - Exit
 
 set /p opt=Select an option then press ENTER: 
@@ -26,6 +27,7 @@ if %opt% == 4 goto SHOW_MAC_ADDRESS
 if %opt% == 5 goto ENERGY_EFFICIENT
 if %opt% == 6 goto FILE_APP_ASSOC
 if %opt% == 7 goto DISC_REPAIR
+if %opt% == 8 goto PING_TO_URL
 if %opt% == 9 goto EXIT_SCRIPT
 
 goto MENU
@@ -65,6 +67,12 @@ goto MENU
 
 :DISC_REPAIR
 chkdsk /f /r
+pause
+goto MENU
+
+:QR_CODE
+set /p url ="Insert URL: "
+curl qrenco.de./%ur1%
 pause
 goto MENU
 
