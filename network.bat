@@ -11,11 +11,8 @@ echo ##############################################################
 echo 1- Ip configurations
 echo 2- Renew IP configurations
 echo 3- DNS_QUERY
-echo 4- Getmac
-echo 5- Powercfg
-echo 6- Assoc
-echo 7- Chkdsk
-echo 8- Net User
+echo 4- Show MAC address 
+echo 5- enery efficent
 echo 9- Exit
 
 set /p opt=Select an option then press ENTER: 
@@ -23,13 +20,10 @@ set /p opt=Select an option then press ENTER:
 if %opt% == 1 goto IP_CONFIGURATIONS
 if %opt% == 2 goto RENEW_IP_CONFIGURATIONS
 if %opt% == 3 goto DNS_QUERY
-if %opt% == 4 goto GETMAC
-if %opt% == 5 goto POWERCFG /ENERGY
-if %opt% == 6 goto ASSOC > OUTPUT.TXT
-if %opt% == 7 goto CHKDSK C: /F /R
-if %opt% == 8 goto NET USER
-if %opt% == 10 goto EXIT_SCRIPT
-
+if %opt% == 4 goto SHOW_MAC_ADDRESS
+if %opt% == 5 goto SHOW_POWERCFG /ENERGY
+if %opt% == 6 goto ENERGY_EFFICIENT
+if %opt% == 9 goto EXIT_SCRIPT
 
 goto MENU
 
@@ -51,30 +45,13 @@ nslookup %domain% %dnsserver%
 pause
 goto MENU
 
-:GETMAC
+:SHOW_MAC_ADDRESS
 getmac
 pause
 goto MENU
 
-:POWERCFG /ENERGY
-POWERCFG /ENERGY
-pause
-goto MENU
-
-
-:ASSOC > C: /F /R
-assoc > output.txt
-pause
-goto MENU
-
-:CHKDSK C: /F /R
-chkdsk c: /f /r
-pause
-goto MENU
-
-
-:NET USER 
-net user
+:ENERGY_EFFICIENT
+Powercfg /enery
 pause
 goto MENU
 
