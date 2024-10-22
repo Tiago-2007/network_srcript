@@ -14,6 +14,7 @@ echo 3 - DNS_QUERY
 echo 4 - Show MAC address 
 echo 5 - Energy efficent
 echo 6 - File/Aplication Association
+echo 7 - Disc Repair
 echo 9 - Exit
 
 set /p opt=Select an option then press ENTER: 
@@ -24,6 +25,7 @@ if %opt% == 3 goto DNS_QUERY
 if %opt% == 4 goto SHOW_MAC_ADDRESS
 if %opt% == 5 goto ENERGY_EFFICIENT
 if %opt% == 6 goto FILE_APP_ASSOC
+if %opt% == 7 goto DISC_REPAIR
 if %opt% == 9 goto EXIT_SCRIPT
 
 goto MENU
@@ -58,6 +60,11 @@ goto MENU
 
 :FILE_APP_ASSOC
 assoc > output.txt
+pause
+goto MENU
+
+:DISC_REPAIR
+chkdsk /f /r
 pause
 goto MENU
 
